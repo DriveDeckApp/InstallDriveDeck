@@ -12,6 +12,16 @@
 
 ---
 
+> ### ⚠️ AltStore distribution is still in progress
+>
+> The AltStore route described below is **not finalised yet**. It works, but it is still being set up
+> and may change or break without warning. If you want a supported install today, get **lifetime
+> TestFlight access** instead at
+> **[drivedeck-carplay.vercel.app](https://drivedeck-carplay.vercel.app/#access)** — one $10 payment,
+> installs through Apple's own TestFlight app, and updates arrive automatically.
+
+---
+
 DriveDeck is a real CarPlay **receiver**, not a simulator. Mount an old iPhone or iPad in your car and
 it becomes the head unit — Maps, Music, Messages, Siri — streamed from the phone in your pocket, or
 from the very same device.
