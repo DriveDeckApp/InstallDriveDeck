@@ -71,7 +71,10 @@ so it is distributed through [AltStore](https://altstore.io), a well-established
 2. Connect your iPhone or iPad to the computer with a cable, and **unlock** the device.
 3. In AltServer, choose **Install AltStore** and pick your device.
 4. Enter your **Apple ID** and password when prompted.
-   - Use your normal Apple ID password, **not** an app-specific password.
+   - Start with your normal Apple ID password; AltServer will prompt for the 2FA code separately.
+   - If it rejects that, create an **app-specific password** at
+     [appleid.apple.com](https://appleid.apple.com) and use that instead — AltServer requires one on
+     some two-factor setups.
    - A free Apple ID is fine. See [Keeping the app alive](#keeping-the-app-alive) for what that means.
 5. On the device, go to **Settings → General → VPN & Device Management**, tap your Apple ID, and
    choose **Trust**.
@@ -179,7 +182,8 @@ This is Apple's end, not AltStore or DriveDeck. Usually rate limiting from repea
 
 - Wait **30–60 minutes** before retrying. Rapid retries make it worse.
 - Check [Apple's System Status](https://www.apple.com/support/systemstatus/).
-- Use your normal Apple ID password, not an app-specific password.
+- Try an **app-specific password** from [appleid.apple.com](https://appleid.apple.com) if the normal
+  one is rejected.
 </details>
 
 <details>
