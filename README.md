@@ -6,7 +6,7 @@
 
 [![Add Source to AltStore](https://img.shields.io/badge/AltStore-Add_Source-1A66DB?style=for-the-badge)](https://drivedeck-flasher.vercel.app/altstore/)
 [![Flash ESP32](https://img.shields.io/badge/ESP32-Flash_in_Browser-C8F75A?style=for-the-badge&logoColor=black)](https://drivedeck-flasher.vercel.app)
-[![Patreon](https://img.shields.io/badge/Patreon-Become_a_Patron-FF424D?style=for-the-badge)](https://www.patreon.com/DriveDeck)
+[![Patreon](https://img.shields.io/badge/Patreon-$5_Lifetime_Access-FF424D?style=for-the-badge)](https://www.patreon.com/DriveDeck)
 
 </div>
 
@@ -43,7 +43,7 @@ part and everything after is quick.
 | **A Mac or Windows PC** | One-time only, to install AltStore |
 | **An ESP32 board** (~$5–$15) | Provides the Wi-Fi network CarPlay requires |
 | **A USB cable** | To flash the ESP32, and to power it in the car |
-| **An active [DriveDeck Patreon](https://www.patreon.com/DriveDeck) membership** | The app is distributed to patrons |
+| **[DriveDeck Patreon](https://www.patreon.com/DriveDeck) membership — one-time $5** | The app is distributed to patrons. $5 once, lifetime access — not a subscription |
 
 ### Which ESP32 to buy
 
@@ -88,7 +88,8 @@ Detailed official walkthrough: **[faq.altstore.io](https://faq.altstore.io)**
 
 DriveDeck is available to patrons, so AltStore needs to know who you are.
 
-1. Become a patron at **[patreon.com/DriveDeck](https://www.patreon.com/DriveDeck)**.
+1. Join at **[patreon.com/DriveDeck](https://www.patreon.com/DriveDeck)** — a **one-time $5 payment
+   for lifetime access**. It is not a recurring subscription.
 2. In AltStore, open the **Settings** tab.
 3. Tap **Patreon** and sign in with the same account.
 
@@ -184,7 +185,7 @@ This is Apple's end, not AltStore or DriveDeck. Usually rate limiting from repea
 <details>
 <summary><strong>Install is refused in AltStore</strong></summary>
 
-- Confirm your [Patreon](https://www.patreon.com/DriveDeck) membership is **active**.
+- Confirm your [Patreon](https://www.patreon.com/DriveDeck) membership is **active** (one-time $5, lifetime access).
 - Confirm Patreon is connected: AltStore → **Settings → Patreon**.
 - Pull to refresh the source: AltStore → Browse → Sources.
 </details>
@@ -258,7 +259,7 @@ This is a limitation of sideloading on iOS, not of DriveDeck.
 | **Source URL (manual)** | `https://drivedeck-flasher.vercel.app/source.json` |
 | **ESP32 web flasher** | [drivedeck-flasher.vercel.app](https://drivedeck-flasher.vercel.app) |
 | **ESP32 firmware source** | [github.com/DriveDeckApp/drivedeck-esp32-ap](https://github.com/DriveDeckApp/drivedeck-esp32-ap) |
-| **Patreon** | [patreon.com/DriveDeck](https://www.patreon.com/DriveDeck) |
+| **Patreon** — one-time $5, lifetime | [patreon.com/DriveDeck](https://www.patreon.com/DriveDeck) |
 | **AltStore** | [altstore.io](https://altstore.io) · [FAQ](https://faq.altstore.io) |
 | **Buy an ESP32** | [classic board](https://a.co/d/0bIfPpNL) · [T-Display-S3 Touch](https://a.co/d/07MaoqIS) |
 
