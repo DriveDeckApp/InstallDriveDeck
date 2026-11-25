@@ -4,8 +4,8 @@
 
 **Turn your iPhone or iPad into an Apple CarPlay head unit.**
 
-[![Add Source to AltStore](https://img.shields.io/badge/AltStore-Add_Source-1A66DB?style=for-the-badge)](https://drivedeck-flasher.vercel.app/altstore/)
-[![Flash ESP32](https://img.shields.io/badge/ESP32-Flash_in_Browser-C8F75A?style=for-the-badge&logoColor=black)](https://drivedeck-flasher.vercel.app)
+[![Add Source to AltStore](https://img.shields.io/badge/AltStore-Add_Source-1A66DB?style=for-the-badge)](https://drivedeck-carplay.vercel.app/altstore/)
+[![Flash ESP32](https://img.shields.io/badge/ESP32-Flash_in_Browser-C8F75A?style=for-the-badge&logoColor=black)](https://drivedeck-carplay.vercel.app)
 [![Patreon](https://img.shields.io/badge/Patreon-$5_Lifetime_Access-FF424D?style=for-the-badge)](https://www.patreon.com/DriveDeck)
 
 </div>
@@ -104,12 +104,12 @@ You only have to do this once.
 
 **The easy way** — open this page on the iPhone or iPad itself and tap the button:
 
-### → [drivedeck-flasher.vercel.app/altstore](https://drivedeck-flasher.vercel.app/altstore/)
+### → [drivedeck-carplay.vercel.app/altstore](https://drivedeck-carplay.vercel.app/altstore/)
 
 **The manual way** — in AltStore, go to **Browse → Sources → ➕** and paste:
 
 ```
-https://drivedeck-flasher.vercel.app/source.json
+https://drivedeck-carplay.vercel.app/source.json
 ```
 
 DriveDeck will then appear in the Browse tab.
@@ -131,7 +131,7 @@ If install is refused, check that your Patreon membership is active and connecte
 This is the Wi-Fi network DriveDeck needs. **No IDE and no command line required** — it flashes
 directly from your browser.
 
-### → [Open the web flasher](https://drivedeck-flasher.vercel.app)
+### → [Open the web flasher](https://drivedeck-carplay.vercel.app)
 
 1. Plug the ESP32 into your **computer** with a USB cable.
 2. Open the flasher in **Chrome, Edge or Opera** on desktop.
@@ -259,9 +259,9 @@ This is a limitation of sideloading on iOS, not of DriveDeck.
 
 | | |
 |---|---|
-| **Add AltStore source** | [drivedeck-flasher.vercel.app/altstore](https://drivedeck-flasher.vercel.app/altstore/) |
-| **Source URL (manual)** | `https://drivedeck-flasher.vercel.app/source.json` |
-| **ESP32 web flasher** | [drivedeck-flasher.vercel.app](https://drivedeck-flasher.vercel.app) |
+| **Add AltStore source** | [drivedeck-carplay.vercel.app/altstore](https://drivedeck-carplay.vercel.app/altstore/) |
+| **Source URL (manual)** | `https://drivedeck-carplay.vercel.app/source.json` |
+| **ESP32 web flasher** | [drivedeck-carplay.vercel.app](https://drivedeck-carplay.vercel.app) |
 | **ESP32 firmware source** | [github.com/DriveDeckApp/drivedeck-esp32-ap](https://github.com/DriveDeckApp/drivedeck-esp32-ap) |
 | **Patreon** — one-time $5, lifetime | [patreon.com/DriveDeck](https://www.patreon.com/DriveDeck) |
 | **AltStore** | [altstore.io](https://altstore.io) · [FAQ](https://faq.altstore.io) |
