@@ -6,8 +6,8 @@
 
 **Turn a spare iPhone or iPad into a CarPlay-style display for your car.**
 
-[![Buy DriveDeck](https://img.shields.io/badge/Buy_DriveDeck-$10_lifetime-C8F75A?style=for-the-badge&logoColor=black)](https://drivedeck-carplay.vercel.app/#access)
-[![Flash ESP32](https://img.shields.io/badge/ESP32-Flash_in_Browser-111111?style=for-the-badge)](https://drivedeck-carplay.vercel.app/#flash)
+[![Buy DriveDeck](https://img.shields.io/badge/Buy_DriveDeck-$10_lifetime-C8F75A?style=for-the-badge&logoColor=black)](https://drivedeck-carplay.com/#access)
+[![Flash ESP32](https://img.shields.io/badge/ESP32-Flash_in_Browser-111111?style=for-the-badge)](https://drivedeck-carplay.com/#flash)
 
 </div>
 
@@ -108,7 +108,7 @@ Any ESP32, S2, S3 or C3 will do. No soldering.
 
 ## 2 · Buy and download DriveDeck
 
-### → [drivedeck-carplay.vercel.app](https://drivedeck-carplay.vercel.app/#access)
+### → [drivedeck-carplay.com](https://drivedeck-carplay.com/#access)
 
 **$10 once. Lifetime access, including every future update.**
 
@@ -151,7 +151,7 @@ Using Sideloadly:
 
 ## 4 · Flash your ESP32
 
-### → [Flash it from your browser](https://drivedeck-carplay.vercel.app/#flash)
+### → [Flash it from your browser](https://drivedeck-carplay.com/#flash)
 
 Under a minute, nothing to install — it uses Web Serial.
 
@@ -303,8 +303,8 @@ you paid with.
 
 | | |
 |---|---|
-| **Buy / download** | [drivedeck-carplay.vercel.app](https://drivedeck-carplay.vercel.app/#access) |
-| **ESP32 web flasher** | [drivedeck-carplay.vercel.app/#flash](https://drivedeck-carplay.vercel.app/#flash) |
+| **Buy / download** | [drivedeck-carplay.com](https://drivedeck-carplay.com/#access) |
+| **ESP32 web flasher** | [drivedeck-carplay.com/#flash](https://drivedeck-carplay.com/#flash) |
 | **Firmware source** | [drivedeck-esp32-ap](https://github.com/DriveDeckApp/drivedeck-esp32-ap) |
 | **Report an issue** | [Open an issue](https://github.com/DriveDeckApp/InstallDriveDeck/issues/new) |
 | **Classic ESP32** | [Amazon](https://a.co/d/0bIfPpNL) |
