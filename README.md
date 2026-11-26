@@ -8,6 +8,8 @@
 
 [![Buy DriveDeck](https://img.shields.io/badge/Buy_DriveDeck-$10_lifetime-C8F75A?style=for-the-badge&logoColor=black)](https://drivedeck-carplay.com/#access)
 [![Flash ESP32](https://img.shields.io/badge/ESP32-Flash_in_Browser-111111?style=for-the-badge)](https://drivedeck-carplay.com/#flash)
+[![Apple Shortcut](https://img.shields.io/badge/Shortcut-Auto--launch_CarPlay-8A4BDB?style=for-the-badge&logo=apple&logoColor=white)](https://www.icloud.com/shortcuts/4504142b922743418f209635884d88bb)
+[![Reddit](https://img.shields.io/badge/r%2FDriveDeck-Community-FF4500?style=for-the-badge&logo=reddit&logoColor=white)](https://www.reddit.com/r/DriveDeck/)
 
 </div>
 
@@ -201,14 +203,23 @@ The dashboard appears within a few seconds.
 **To get back to the app from the CarPlay screen**, tap anywhere with **three fingers**, or tap the
 DriveDeck icon on the CarPlay home screen.
 
-### Optional: open automatically
+### Optional: start it without touching anything
 
-The app links to an Apple Shortcut that opens DriveDeck as soon as your device joins the
-`DriveDeckAP` network, so powering the board starts everything. It is on the home screen under
-**Auto-open with Shortcuts**.
+## 🪄 Auto-launch with an Apple Shortcut
+
+### → [Add the Shortcut](https://www.icloud.com/shortcuts/4504142b922743418f209635884d88bb)
+
+Power the ESP32 and **DriveDeck opens by itself.** The Shortcut watches for the `DriveDeckAP`
+network and launches the app the moment your device joins it, so getting in the car is the only
+action you take.
+
+- Open that link **on the device you mount in the car**, then tap **Add Shortcut**.
+- It only triggers on joining that one network, and does nothing else.
+- Edit or delete it any time in the **Shortcuts** app, under **Automation**.
+- It is also linked from DriveDeck's home screen, under **Auto-open with Shortcuts**.
 
 iOS gives an app no way to launch itself on a Wi-Fi change, which is why this is a Shortcut rather
-than a setting.
+than a setting inside DriveDeck.
 
 ---
 
@@ -299,10 +310,25 @@ you paid with.
 
 ---
 
+## Community
+
+### → [r/DriveDeck](https://www.reddit.com/r/DriveDeck/)
+
+Setup help, what works in which car, mount recommendations, and release announcements. If something
+is not working, posting there usually gets a faster answer than an issue — other people have likely
+hit the same thing.
+
+For bugs and anything needing a fix, [open an issue](https://github.com/DriveDeckApp/InstallDriveDeck/issues/new)
+instead so it does not get lost.
+
+---
+
 ## Links
 
 | | |
 |---|---|
+| **Community** | [r/DriveDeck](https://www.reddit.com/r/DriveDeck/) |
+| **Auto-launch Shortcut** | [Add it](https://www.icloud.com/shortcuts/4504142b922743418f209635884d88bb) |
 | **Buy / download** | [drivedeck-carplay.com](https://drivedeck-carplay.com/#access) |
 | **ESP32 web flasher** | [drivedeck-carplay.com/#flash](https://drivedeck-carplay.com/#flash) |
 | **Firmware source** | [drivedeck-esp32-ap](https://github.com/DriveDeckApp/drivedeck-esp32-ap) |
