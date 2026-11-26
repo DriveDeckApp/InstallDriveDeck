@@ -1,0 +1,6 @@
+# GitHub Pages renders README.md directly, so this file only themes it — there is deliberately no
+# second copy of the content to drift out of sync with the repo.
+theme: jekyll-theme-minimal
+title: Install DriveDeck
+description: Turn a spare iPhone or iPad into a native Apple CarPlay display for your car.
+show_downloads: false
