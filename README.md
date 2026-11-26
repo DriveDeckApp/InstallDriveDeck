@@ -1,47 +1,48 @@
 <div align="center">
 
+<img src="docs/images/in-car.jpg" width="420" alt="DriveDeck running on an iPhone mounted in a car dashboard">
+
 # Install DriveDeck
 
-**Turn your iPhone or iPad into an Apple CarPlay head unit.**
+**Turn a spare iPhone or iPad into a CarPlay-style display for your car.**
 
-[![Add Source to AltStore](https://img.shields.io/badge/AltStore-Add_Source-1A66DB?style=for-the-badge)](https://drivedeck-carplay.vercel.app/altstore/)
-[![Flash ESP32](https://img.shields.io/badge/ESP32-Flash_in_Browser-C8F75A?style=for-the-badge&logoColor=black)](https://drivedeck-carplay.vercel.app)
-[![Patreon](https://img.shields.io/badge/Patreon-$5_Lifetime_Access-FF424D?style=for-the-badge)](https://www.patreon.com/DriveDeck)
+[![Buy DriveDeck](https://img.shields.io/badge/Buy_DriveDeck-$10_lifetime-C8F75A?style=for-the-badge&logoColor=black)](https://drivedeck-carplay.vercel.app/#access)
+[![Flash ESP32](https://img.shields.io/badge/ESP32-Flash_in_Browser-111111?style=for-the-badge)](https://drivedeck-carplay.vercel.app/#flash)
 
 </div>
 
 ---
 
-> ### ⚠️ AltStore distribution is still in progress
->
-> The AltStore route described below is **not finalised yet**. It works, but it is still being set up
-> and may change or break without warning. If you want a supported install today, get **lifetime
-> TestFlight access** instead at
-> **[drivedeck-carplay.vercel.app](https://drivedeck-carplay.vercel.app/#access)** — one $10 payment,
-> installs through Apple's own TestFlight app, and updates arrive automatically.
+DriveDeck is a real CarPlay **receiver**, not a simulator. Mount an old iPhone or iPad in your car
+and it becomes the display — Maps, Music, Messages, Siri — streamed from the phone in your pocket,
+or from the very same device.
+
+This guide takes about **15 minutes** end to end.
 
 ---
 
-DriveDeck is a real CarPlay **receiver**, not a simulator. Mount an old iPhone or iPad in your car and
-it becomes the head unit — Maps, Music, Messages, Siri — streamed from the phone in your pocket, or
-from the very same device.
+## What it looks like
 
-This guide takes about **15 minutes** end to end. Read it once before starting; step 1 is the fiddly
-part and everything after is quick.
+| Home screen | Settings |
+|---|---|
+| <img src="docs/images/1-home.png" width="330"> | <img src="docs/images/2-settings.png" width="330"> |
+
+| Setup guide | Connection inspector |
+|---|---|
+| <img src="docs/images/3-guide.png" width="330"> | <img src="docs/images/4-inspector.png" width="330"> |
 
 ---
 
 ## Table of contents
 
-1. [What you'll need](#1-what-youll-need)
-2. [Install AltStore](#2-install-altstore)
-3. [Connect your Patreon account](#3-connect-your-patreon-account)
-4. [Add the DriveDeck source](#4-add-the-drivedeck-source)
-5. [Install DriveDeck](#5-install-drivedeck)
-6. [Flash your ESP32](#6-flash-your-esp32)
-7. [First run](#7-first-run)
+1. [What you'll need](#1--what-youll-need)
+2. [Buy and download DriveDeck](#2--buy-and-download-drivedeck)
+3. [Sideload it onto your device](#3--sideload-it-onto-your-device)
+4. [Flash your ESP32](#4--flash-your-esp32)
+5. [Join the network](#5--join-the-network)
+6. [First run](#6--first-run)
+7. [Activate](#7--activate)
 8. [Troubleshooting](#troubleshooting)
-9. [Keeping the app alive](#keeping-the-app-alive)
 
 ---
 
@@ -49,219 +50,213 @@ part and everything after is quick.
 
 | | Why |
 |---|---|
-| **iPhone or iPad on iOS 17 or later** | Runs DriveDeck as the head unit |
-| **A Mac or Windows PC** | One-time only, to install AltStore |
-| **An ESP32 board** (~$5–$15) | Provides the Wi-Fi network CarPlay requires |
-| **A USB cable** | To flash the ESP32, and to power it in the car |
-| **[DriveDeck Patreon](https://www.patreon.com/DriveDeck) membership — one-time $5** | The app is distributed to patrons. $5 once, lifetime access — not a subscription |
+| **A spare iPhone or iPad, iOS 17+** | This is the device you mount in the car. Your everyday phone stays in your pocket. |
+| **A Mac or PC** | Needed once, to install the app. iOS cannot install an `.ipa` from a browser. |
+| **An ESP32 board** | Supplies the Wi-Fi network the connection requires. No SIM, no router, no data plan. |
+| **An Apple ID** | The sideloading tool re-signs the app with your own account. A free one works. |
+| **A USB cable** | To flash the board, and to connect your device to the computer. |
 
-### Which ESP32 to buy
+### Which ESP32?
 
-Either of these works. The first is the cheapest thing that does the job; the second adds a screen
-that shows the network details and whether your phone has connected — genuinely useful in a car.
+Any ESP32, S2, S3 or C3 will do. No soldering.
 
-- **[ESP32 classic dev board](https://a.co/d/0bIfPpNL)** — cheapest option
-- **[LilyGO T-Display-S3 Touch](https://a.co/d/07MaoqIS)** — adds an on-board status screen
-
-Any ESP32, ESP32-S2, ESP32-S3 or ESP32-C3 board will work. You do **not** need a SIM card, an antenna,
-or any soldering.
-
-> **Why an ESP32 at all?** Wireless CarPlay refuses to start unless the device is on a Wi-Fi network —
-> iOS requires a real Wi-Fi address before it will connect. You do not need *internet*, just a network.
-> A $5 ESP32 provides one. [Full explanation here.](https://github.com/DriveDeckApp/drivedeck-esp32-ap#why-this-exists)
+- **[Classic ESP32 dev board](https://a.co/d/0bIfPpNL)** — cheapest, and all DriveDeck needs.
+- **[LilyGO T-Display-S3 Touch](https://a.co/d/07MaoqIS)** — recommended. Its small screen shows the
+  network name and how many devices are connected, which is genuinely useful when something is not
+  working and you have no laptop with you.
 
 ---
 
-## 2 · Install AltStore
+## 2 · Buy and download DriveDeck
 
-DriveDeck cannot be on the App Store — it uses private system frameworks that Apple does not permit —
-so it is distributed through [AltStore](https://altstore.io), a well-established sideloading tool.
+### → [drivedeck-carplay.vercel.app](https://drivedeck-carplay.vercel.app/#access)
 
-1. On your **computer**, download **AltServer** from [altstore.io](https://altstore.io) and install it.
-2. Connect your iPhone or iPad to the computer with a cable, and **unlock** the device.
-3. In AltServer, choose **Install AltStore** and pick your device.
-4. Enter your **Apple ID** and password when prompted.
-   - Start with your normal Apple ID password; AltServer will prompt for the 2FA code separately.
-   - If it rejects that, create an **app-specific password** at
-     [appleid.apple.com](https://appleid.apple.com) and use that instead — AltServer requires one on
-     some two-factor setups.
-   - A free Apple ID is fine. See [Keeping the app alive](#keeping-the-app-alive) for what that means.
-5. On the device, go to **Settings → General → VPN & Device Management**, tap your Apple ID, and
-   choose **Trust**.
-6. Open AltStore on the device. You should see the Browse tab.
+**$10 once. Lifetime access, including every future update.**
 
-Detailed official walkthrough: **[faq.altstore.io](https://faq.altstore.io)**
+Pay by card, Apple Pay, Link, Klarna or Cash App. You land on a download page straight afterwards.
 
-> If AltServer fails with an **HTTP 503**, that is Apple's authentication server, not AltStore and not
-> DriveDeck. Wait 30–60 minutes and try again — see [Troubleshooting](#troubleshooting).
+> **Keep that download link.** It never expires and always serves the newest build, so it is how you
+> get updates later. It is also in your receipt email. The link is tied to your purchase — treat it
+> like a receipt rather than sharing it.
 
 ---
 
-## 3 · Connect your Patreon account
+## 3 · Sideload it onto your device
 
-DriveDeck is available to patrons, so AltStore needs to know who you are.
+iOS will not open an `.ipa` directly, so this step happens on a computer. The tool re-signs the app
+with your own Apple ID.
 
-1. Join at **[patreon.com/DriveDeck](https://www.patreon.com/DriveDeck)** — a **one-time $5 payment
-   for lifetime access**. It is not a recurring subscription.
-2. In AltStore, open the **Settings** tab.
-3. Tap **Patreon** and sign in with the same account.
+Any of these work:
 
-You only have to do this once.
+| Tool | Platform | Notes |
+|---|---|---|
+| **[Sideloadly](https://sideloadly.io)** | macOS, Windows | Simplest. Start here. |
+| **[AltStore](https://altstore.io)** | macOS, Windows | Can refresh the signature automatically over Wi-Fi, which saves repeating this later. |
+| **[Feather](https://github.com/khcrysalis/Feather)** | iOS | On-device, if you would rather not use a computer. |
 
----
+Using Sideloadly:
 
-## 4 · Add the DriveDeck source
+1. Install Sideloadly on your Mac or PC and open it.
+2. Connect your iPhone or iPad by cable. Tap **Trust** on the device if asked.
+3. Drag `DriveDeck.ipa` into the Sideloadly window.
+4. Enter your Apple ID and press **Start**. It re-signs and installs the app.
+5. On the device, go to **Settings → General → VPN & Device Management** and trust your developer
+   certificate.
+6. Open DriveDeck.
 
-**The easy way** — open this page on the iPhone or iPad itself and tap the button:
-
-### → [drivedeck-carplay.vercel.app/altstore](https://drivedeck-carplay.vercel.app/altstore/)
-
-**The manual way** — in AltStore, go to **Browse → Sources → ➕** and paste:
-
-```
-https://drivedeck-carplay.vercel.app/source.json
-```
-
-DriveDeck will then appear in the Browse tab.
-
----
-
-## 5 · Install DriveDeck
-
-1. In AltStore, open **Browse** and tap **DriveDeck**.
-2. Tap **Install** and wait — it is about 12 MB.
-3. The DriveDeck icon appears on your home screen.
-
-If install is refused, check that your Patreon membership is active and connected (step 3).
+> **With a free Apple ID the app stops working after 7 days** and you repeat steps 2–4. That is an
+> Apple limitation on free accounts, not something DriveDeck controls. A paid Apple Developer
+> account lasts a year, and AltStore can refresh it automatically over Wi-Fi.
 
 ---
 
-## 6 · Flash your ESP32
+## 4 · Flash your ESP32
 
-This is the Wi-Fi network DriveDeck needs. **No IDE and no command line required** — it flashes
-directly from your browser.
+### → [Flash it from your browser](https://drivedeck-carplay.vercel.app/#flash)
 
-### → [Open the web flasher](https://drivedeck-carplay.vercel.app)
+Under a minute, nothing to install — it uses Web Serial.
 
-1. Plug the ESP32 into your **computer** with a USB cable.
-2. Open the flasher in **Chrome, Edge or Opera** on desktop.
-   *(Safari and Firefox do not support Web Serial, and no browser on iOS does.)*
+1. Open that page **on a desktop in Chrome, Edge or Opera**. Safari and Firefox do not support Web
+   Serial, and neither does any browser on iOS.
+2. Plug the ESP32 into the computer with a USB cable.
 3. Pick your board from the dropdown.
-4. Press **Connect & Flash**, choose the serial port when prompted, and confirm.
-5. Under a minute later the board is broadcasting:
+4. Press **Connect & Flash**, choose the serial port — usually named `usbmodem`, `USB Serial` or
+   `CP210x` — then **Install**, and confirm erasing the device.
+
+Firmware source and manual flashing instructions:
+**[drivedeck-esp32-ap](https://github.com/DriveDeckApp/drivedeck-esp32-ap)**
+
+Once flashed, the board broadcasts:
 
 | | |
 |---|---|
-| **Network** | `DriveDeckAP` |
-| **Password** | `drivedeck123` |
-| **Channel** | `6` |
+| Network | `DriveDeckAP` |
+| Password | `drivedeck123` |
+| Channel | 6 |
 
-Prefer to build it yourself, or want to see what you are flashing? Full source, wiring notes and
-manual instructions for the Arduino IDE and `arduino-cli`:
-
-**[github.com/DriveDeckApp/drivedeck-esp32-ap](https://github.com/DriveDeckApp/drivedeck-esp32-ap)**
+Power it from any USB source in the car.
 
 ---
 
-## 7 · First run
+## 5 · Join the network
 
-1. Power the ESP32 from any USB port — the car's own USB socket is ideal.
-2. On the iPhone, go to **Settings → Wi-Fi** and join **DriveDeckAP** (password `drivedeck123`).
-   - iOS will warn there is **no internet connection**. That is expected and harmless; your data keeps
-     working over cellular.
-   - **You only have to do this once.** iOS remembers the network and re-joins automatically whenever
-     the board is powered and nearby.
-3. Turn **off** the iPhone's own **Personal Hotspot** (Settings → Personal Hotspot).
-   Hosting a hotspot uses the same radio that wireless CarPlay needs and will stop it starting.
-4. Open **DriveDeck**. The defaults are already correct for the ESP32 — network name, password and
-   channel are pre-filled.
-5. Tap **Start Receiver**.
-6. Approve the CarPlay prompt if iOS shows one.
+On the device you are mounting in the car, go to **Settings → Wi-Fi** and join **`DriveDeckAP`**.
 
-CarPlay should appear within a few seconds. The in-app **Setup Guide** repeats these steps on the
-device, and the **Protocol Inspector** shows exactly what is happening if something stalls.
+iOS will warn there is no internet connection. **That is expected and harmless** — the board exists
+only to hand out an address. iOS remembers the network and rejoins automatically whenever the board
+is powered and nearby.
+
+---
+
+## 6 · First run
+
+1. Open DriveDeck.
+2. Under **General Controls**, set **CarPlay Link** to **DriveDeck ESP32**. The network name,
+   password and channel fill in automatically.
+3. **Turn Personal Hotspot OFF** on this device, in Settings → Personal Hotspot. This is the single
+   most common reason setup fails: hosting a hotspot occupies the same radio the link needs.
+4. Press **Start Receiver**.
+
+The dashboard appears within a few seconds.
+
+**To get back to the app from the CarPlay screen**, tap anywhere with **three fingers**, or tap the
+DriveDeck icon on the CarPlay home screen.
+
+### Optional: open automatically
+
+The app links to an Apple Shortcut that opens DriveDeck as soon as your device joins the
+`DriveDeckAP` network, so powering the board starts everything. It is on the home screen under
+**Auto-open with Shortcuts**.
+
+iOS gives an app no way to launch itself on a Wi-Fi change, which is why this is a Shortcut rather
+than a setting.
+
+---
+
+## 7 · Activate
+
+You get **10 minutes of CarPlay free** to confirm everything works. After that the app asks you to
+activate.
+
+**Your activation code is the email address you paid with.** There is nothing else to keep track of.
+
+1. Open **Settings → Activate DriveDeck** in the app, or wait for the prompt.
+2. Enter the email you used at checkout.
+3. Press **Activate**.
+
+This needs an internet connection once. After that the app stays unlocked permanently, including
+through reinstalls and re-signing.
+
+> **One purchase activates one device.** Entering the same email on a second device is refused. You
+> can remove an activation in **Settings → Remove activation**, but note that this does not restore
+> the free trial.
 
 ---
 
 ## Troubleshooting
 
 <details>
-<summary><strong>AltServer: "Apple's authentication servers returned an error (HTTP 503)"</strong></summary>
-
-This is Apple's end, not AltStore or DriveDeck. Usually rate limiting from repeated sign-in attempts.
-
-- Wait **30–60 minutes** before retrying. Rapid retries make it worse.
-- Check [Apple's System Status](https://www.apple.com/support/systemstatus/).
-- Try an **app-specific password** from [appleid.apple.com](https://appleid.apple.com) if the normal
-  one is rejected.
-</details>
-
-<details>
-<summary><strong>Install is refused in AltStore</strong></summary>
-
-- Confirm your [Patreon](https://www.patreon.com/DriveDeck) membership is **active** (one-time $5, lifetime access).
-- Confirm Patreon is connected: AltStore → **Settings → Patreon**.
-- Pull to refresh the source: AltStore → Browse → Sources.
-</details>
-
-<details>
-<summary><strong>"Untrusted Developer" when opening the app</strong></summary>
-
-**Settings → General → VPN & Device Management** → tap your Apple ID → **Trust**.
-</details>
-
-<details>
-<summary><strong>The DriveDeckAP network does not appear</strong></summary>
-
-- Confirm the ESP32 has power. On a T-Display-S3 the screen shows the network details and turns green
-  when a device connects.
-- Re-flash it, and check the serial monitor at **115200 baud** — the firmware prints its SSID and
-  channel on boot.
-</details>
-
-<details>
-<summary><strong>Nothing happens after Start Receiver</strong></summary>
+<summary><strong>Stuck on "Waiting for iPhone"</strong></summary>
 
 In order of likelihood:
 
-1. The iPhone's **Personal Hotspot is on** — turn it off. This is the most common cause.
-2. The phone is not actually joined to `DriveDeckAP` — check Settings → Wi-Fi.
-3. The network name, password or **channel** in DriveDeck does not match the board.
-4. An older build of the app is still installed and holding the network port — delete it.
-
-The **Protocol Inspector** inside the app gives the exact reason, on-device, with no computer needed.
+1. **Personal Hotspot is on.** Turn it off. This is the most common cause by a wide margin.
+2. **Not joined to `DriveDeckAP`.** Check Settings → Wi-Fi. The "no internet" warning is fine.
+3. **The ESP32 has no power.** Its LED should be lit; on the T-Display-S3 the screen shows the
+   network name.
+4. **Wrong credentials in the app.** Set CarPlay Link to **DriveDeck ESP32** to refill them.
+5. Open the app's **Connection Inspector** — it shows exactly which step of the handshake is
+   failing.
 </details>
 
 <details>
-<summary><strong>No sound in the car</strong></summary>
+<summary><strong>No audio, or audio comes out of the wrong place</strong></summary>
 
-Audio stays on the iPhone by design, so it reaches your car however the phone normally does — usually
-Bluetooth. In DriveDeck, set **Audio** to **Bluetooth**, connect your car, and tap
-**Remember this device**. If the car is not connected, sound comes out of the phone's speaker instead.
+Audio plays through the **phone's own output**, by design, and reaches your car stereo over
+Bluetooth exactly as it normally would. Connect the device to your car's Bluetooth as usual.
+
+If it comes out of the device's own speaker, the Bluetooth connection has dropped — reconnect it in
+Settings → Bluetooth.
 </details>
 
 <details>
-<summary><strong>The picture is sharp but the layout is wrong, or there are black bars</strong></summary>
+<summary><strong>Black bars around the dashboard</strong></summary>
 
-Set **Resolution** in Settings to match your screen, then restart the receiver. The resolution is
-negotiated once per session. On a folding device, **unfold it before starting**.
+The advertised resolution does not match your screen's aspect ratio. Set **Display** to
+**Edge-to-Edge**, or pick a **Resolution** matching your device, in Settings.
 </details>
 
----
+<details>
+<summary><strong>Taps land on the wrong icon</strong></summary>
 
-## Keeping the app alive
+Restart the receiver. The touch coordinate space is locked when the session starts, so changing
+resolution mid-session leaves it mismatched.
+</details>
 
-Sideloaded apps are signed with *your* Apple ID, and that signature expires:
+<details>
+<summary><strong>The app stopped working after a week</strong></summary>
 
-| Apple ID | App lasts | Refresh |
-|---|---|---|
-| **Free** | 7 days | Open AltStore on the same Wi-Fi as AltServer and tap **Refresh All** |
-| **Paid Developer ($99/yr)** | 1 year | Rarely |
+Free Apple IDs sign apps for 7 days only. Re-run your sideloading tool to refresh it; AltStore can
+do this automatically over Wi-Fi, and a paid Apple Developer account extends it to a year.
 
-AltStore can refresh in the background when your device is on the same network as a running AltServer.
-Leaving AltServer running on a computer at home means it usually happens without you noticing.
+Your activation is not affected — it survives re-signing.
+</details>
 
-This is a limitation of sideloading on iOS, not of DriveDeck.
+<details>
+<summary><strong>"This purchase is already activated on another device"</strong></summary>
+
+One purchase covers one device. If you have changed phones, or activated the wrong device,
+[open an issue](https://github.com/DriveDeckApp/InstallDriveDeck/issues/new) with the email you paid
+with and we will reset it.
+</details>
+
+<details>
+<summary><strong>Lost the download link</strong></summary>
+
+It is in the receipt email from your purchase. If you cannot find it,
+[open an issue](https://github.com/DriveDeckApp/InstallDriveDeck/issues/new) with the email address
+you paid with.
+</details>
 
 ---
 
@@ -269,16 +264,20 @@ This is a limitation of sideloading on iOS, not of DriveDeck.
 
 | | |
 |---|---|
-| **Add AltStore source** | [drivedeck-carplay.vercel.app/altstore](https://drivedeck-carplay.vercel.app/altstore/) |
-| **Source URL (manual)** | `https://drivedeck-carplay.vercel.app/source.json` |
-| **ESP32 web flasher** | [drivedeck-carplay.vercel.app](https://drivedeck-carplay.vercel.app) |
-| **ESP32 firmware source** | [github.com/DriveDeckApp/drivedeck-esp32-ap](https://github.com/DriveDeckApp/drivedeck-esp32-ap) |
-| **Patreon** — one-time $5, lifetime | [patreon.com/DriveDeck](https://www.patreon.com/DriveDeck) |
-| **AltStore** | [altstore.io](https://altstore.io) · [FAQ](https://faq.altstore.io) |
-| **Buy an ESP32** | [classic board](https://a.co/d/0bIfPpNL) · [T-Display-S3 Touch](https://a.co/d/07MaoqIS) |
+| **Buy / download** | [drivedeck-carplay.vercel.app](https://drivedeck-carplay.vercel.app/#access) |
+| **ESP32 web flasher** | [drivedeck-carplay.vercel.app/#flash](https://drivedeck-carplay.vercel.app/#flash) |
+| **Firmware source** | [drivedeck-esp32-ap](https://github.com/DriveDeckApp/drivedeck-esp32-ap) |
+| **Report an issue** | [Open an issue](https://github.com/DriveDeckApp/InstallDriveDeck/issues/new) |
+| **Classic ESP32** | [Amazon](https://a.co/d/0bIfPpNL) |
+| **T-Display-S3 Touch** | [Amazon](https://a.co/d/07MaoqIS) |
 
 ---
 
 <div align="center">
-<sub>DriveDeck is a research project. It uses private system frameworks and cannot be distributed on the App Store.</sub>
+<sub>
+
+DriveDeck is an independent project. It is not affiliated with, authorised by, or endorsed by
+Apple Inc. CarPlay is a trademark of Apple Inc.
+
+</sub>
 </div>
