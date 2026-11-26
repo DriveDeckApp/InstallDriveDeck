@@ -17,6 +17,14 @@ DriveDeck is a real CarPlay **receiver**, not a simulator. Mount an old iPhone o
 and it becomes the display — Maps, Music, Messages, Siri — streamed from the phone in your pocket,
 or from the very same device.
 
+> ### 🕙 Everyone gets 10 minutes free
+>
+> Download and install DriveDeck without paying anything. You get **10 minutes of CarPlay** to
+> prove it works on your own devices before you spend a penny. The clock only runs while CarPlay is
+> actually streaming, so nothing is wasted while you set things up.
+>
+> No account, no card, no trial signup.
+
 This guide takes about **15 minutes** end to end.
 
 ---
@@ -52,9 +60,29 @@ This guide takes about **15 minutes** end to end.
 |---|---|
 | **A spare iPhone or iPad, iOS 17+** | This is the device you mount in the car. Your everyday phone stays in your pocket. |
 | **A Mac or PC** | Needed once, to install the app. iOS cannot install an `.ipa` from a browser. |
-| **An ESP32 board** | Supplies the Wi-Fi network the connection requires. No SIM, no router, no data plan. |
+| **A Wi-Fi network** | Your home network is fine for testing. Any network will do; it is not used for internet. |
+| **An ESP32 board** *(for use in the car)* | Supplies a network where none exists. Not needed to try DriveDeck at home. |
 | **An Apple ID** | The sideloading tool re-signs the app with your own account. A free one works. |
 | **A USB cable** | To flash the board, and to connect your device to the computer. |
+
+### Do I need the ESP32 to try it?
+
+**No.** Any Wi-Fi network works, including your home network — so you can test DriveDeck indoors
+before buying any hardware at all:
+
+1. Join both devices, or the single device, to your **home Wi-Fi**.
+2. In the app, set **CarPlay Link** to **Home Wifi**.
+3. Enter your home network's name and password in the Wi-Fi fields.
+4. Press **Start Receiver**.
+
+That is the fastest way to confirm DriveDeck works on your device.
+
+**The ESP32 is for the car**, where no Wi-Fi exists. It creates a small network on demand so the
+connection can start, needs no SIM, router or data plan, and runs off any USB socket. Without it,
+DriveDeck works in your driveway and nowhere else.
+
+A travel router works too, if you already own one — the ESP32 is simply the $5 version of the same
+idea.
 
 ### Which ESP32?
 
