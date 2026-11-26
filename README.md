@@ -13,9 +13,20 @@
 
 ---
 
-DriveDeck is a real CarPlay **receiver**, not a simulator. Mount an old iPhone or iPad in your car
-and it becomes the display — Maps, Music, Messages, Siri — streamed from the phone in your pocket,
-or from the very same device.
+## This is native Apple CarPlay
+
+Not a simulation, not a themed launcher, not a lookalike.
+
+DriveDeck presents itself to iOS as a vehicle head unit, so **iOS starts a genuine CarPlay session**
+and streams the exact interface it would send to a factory-fitted car. Maps, Music, Messages, Siri
+and every CarPlay-enabled third-party app are **Apple's own apps, running natively on your own
+device** — the stream is decoded on the GPU and your touches are sent back as real input.
+
+Nothing is reimplemented or imitated, and nothing goes through the internet. The link is directly
+between your two devices.
+
+Mount an old iPhone or iPad in your car and it becomes the display — streamed from the phone in your
+pocket, or from the very same device.
 
 > ### 🕙 Everyone gets 10 minutes free
 >
